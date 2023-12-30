@@ -1,0 +1,70 @@
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url(../src/font/PixelifySans-VariableFont_wght.ttf);
+}
+
+html {
+  font-family: "Pixelify Sans";
+}
+
+body {
+  background-image: url('../src/etg-bg-home.jpg');
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0A0609;
+  background-size: cover;
+  height: 100vh;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: 1fr 65% 1fr;
+  height: 100%;
+  margin: auto;
+}
+
+#content .menu-container {
+  height: 100%;
+  display: grid;
+  grid-column: 2;
+  grid-template-rows: auto 1fr;
+  background-color: #fe39ace1;
+  
+}
+
+#content img {
+  width: 250px;
+  margin: 20px;
+  /* justify-self: left; */
+}
+
+#content .sidebar {
+  display: grid;
+}
+
+.sidebar .tabs {
+  color: darkgray;
+  font-size: 2.4em;
+  display: grid;
+  /* grid-template-columns: 1fr; */
+  align-content: space-around;
+}
+
+.tabs div a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 20px;
+}
+
+.tabs div a:hover {
+  text-shadow: 0 0 4px #03ffff;
+  color: white;
+}
+
+.menu-container .menu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-auto-rows: 1fr;
+}
