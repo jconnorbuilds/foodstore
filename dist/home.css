@@ -1,0 +1,52 @@
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url(../src/font/PixelifySans-VariableFont_wght.ttf);
+}
+
+html {
+  font-family: "Pixelify Sans";
+  
+}
+
+body {
+  background-image: url('../src/etg-bg-home.jpg');
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0A0609;
+  background-size: cover;
+  height: 100vh;
+  
+}
+
+#content {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#content img {
+  margin-top: 50px;
+  grid-column: 1 / 3;
+  justify-self: center;
+}
+
+#content .home-tabs  {
+  color: darkgray;
+  justify-self: center;
+  font-size: 3em;
+  transition: font-size 100ms;
+}
+
+.home-tabs a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 20px;
+}
+
+.home-tabs a:hover {
+  text-shadow: 0 0 4px #03ffffa6;
+  cursor: pointer;
+  color: white;
+}
