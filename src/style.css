@@ -1,0 +1,131 @@
+@font-face {
+  font-family: "Pixelify Sans";
+  src: url(../src/font/PixelifySans-VariableFont_wght.ttf);
+}
+
+html {
+  font-family: "Pixelify Sans";
+}
+
+body {
+  background-image: url('../src/etg-bg-home.jpg');
+  margin: 0;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-color: #0A0609;
+  background-size: cover;
+  height: 100vh;
+}
+
+#content {
+  display: grid;
+  grid-template-columns: 1fr 65% 1fr;
+  height: 100%;
+  margin: auto;
+}
+
+#content .menu-container {
+  height: 100%;
+  display: grid;
+  grid-column: 2;
+  grid-template-rows: auto 1fr;
+  background-color: #fe39acd6;
+  min-width: min-content;
+}
+
+.sidebar > img {
+  width: 180px;
+  margin: 20px;
+  justify-self: center;
+}
+
+#content .sidebar {
+  display: grid;
+}
+
+#nav .tabs {
+  display: flex;
+  justify-content: space-between;
+}
+
+#nav .tabs div {
+  color: black;
+  font-size: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-content: space-around;
+}
+
+.tabs div a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 0.8rem;
+}
+
+.tabs div a:hover {
+  text-shadow: 0 0 4px #03ffff;
+  color: white;
+}
+
+.menu-container .menu {
+  display: grid;
+  justify-content: center;
+  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+  grid-template-rows: min-content;
+  padding: 2rem;
+  gap: 2rem;
+}
+
+.menu .item {
+  background-color: rgba(255, 255, 255, 0.13);
+  padding: 2rem;
+  min-width: 300px;
+  border-radius: 40px 20px;
+  transition: background-color 250ms, border-radius 250ms, box-shadow 350ms;
+}
+
+.menu .item:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 40px;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.765);
+}
+
+.menu .item-name {
+  display: grid;
+  justify-items: center;
+}
+
+.item h3 {
+  display: inline;
+}
+
+.menu .item img {
+  display: inline;
+  height: 45px;
+  image-rendering: pixelated;
+}
+
+.menu h1 {
+  grid-column: 1 / -1;
+  font-size: 3rem;
+  padding: 1rem;
+  justify-self: center;
+}
+
+.menu .item > p {
+  margin: 1rem 0;
+}
+.menu .item-detail {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+.item-detail .quality,
+.item-detail .type {
+  grid-column: 1;
+}
+.item-detail .val {
+  grid-column: 2;
+  margin: 0 3ch
+}
