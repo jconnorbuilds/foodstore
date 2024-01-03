@@ -1,26 +1,33 @@
 @font-face {
-  font-family: "Pixelify Sans";
-  src: url(../src/font/PixelifySans-VariableFont_wght.ttf);
+  font-family: 'Pixelify Sans';
+  src: url(./font/PixelifySans-VariableFont_wght.ttf) format('truetype');
 }
 
 html {
-  font-family: "Pixelify Sans";
+  font-family: 'Pixelify Sans';
 }
 
 body {
-  background-image: url('../src/etg-bg-home.jpg');
+  background-image: url('./img/etg-bg-home.jpg');
   margin: 0;
   background-repeat: no-repeat;
   background-position: center;
-  background-color: #0A0609;
+  background-color: #0a0609;
   background-size: cover;
   height: 100vh;
 }
 
-#content {
+#content.home {
   display: grid;
-  grid-template-columns: 1fr 65% 1fr;
   height: 100%;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+}
+
+#content.menus {
+  display: grid;
+  height: 100%;
+  grid-template-columns: 1fr 65% 1fr;
   margin: auto;
 }
 
@@ -33,14 +40,34 @@ body {
   min-width: min-content;
 }
 
-.sidebar > img {
+#content.home > img {
+  margin-top: 50px;
+  grid-column: 1 / 3;
+  justify-self: center;
+}
+
+#content.menus .sidebar {
+  display: grid;
+}
+
+.sidebar img {
   width: 180px;
   margin: 20px;
   justify-self: center;
 }
 
-#content .sidebar {
-  display: grid;
+#content.home .home-tabs {
+  color: darkgray;
+  justify-self: center;
+  font-size: 3em;
+  transition: font-size 100ms;
+}
+
+.home-tabs a {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  padding: 20px;
 }
 
 #nav .tabs {
@@ -63,7 +90,8 @@ body {
   padding: 0.8rem;
 }
 
-.tabs div a:hover {
+.tabs div a:hover,
+.home-tabs a:hover {
   text-shadow: 0 0 4px #03ffff;
   color: white;
 }
@@ -127,5 +155,5 @@ body {
 }
 .item-detail .val {
   grid-column: 2;
-  margin: 0 3ch
+  margin: 0 3ch;
 }

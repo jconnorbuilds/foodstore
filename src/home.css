@@ -1,21 +1,19 @@
 @font-face {
   font-family: "Pixelify Sans";
-  src: url(../src/font/PixelifySans-VariableFont_wght.ttf);
+  src: url(./font/PixelifySans-VariableFont_wght.ttf) format('truetype');
 }
 
 html {
   font-family: "Pixelify Sans";
-  
 }
 
 body {
-  background-image: url('../src/etg-bg-home.jpg');
+  background-image: url('./img/etg-bg-home.jpg');
   background-repeat: no-repeat;
   background-position: center;
   background-color: #0A0609;
   background-size: cover;
   height: 100vh;
-  
 }
 
 #content {
