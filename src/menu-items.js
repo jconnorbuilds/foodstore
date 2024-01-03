@@ -1,14 +1,14 @@
 import logo from './img/etglogo.png';
-import { contentDiv, makeA } from './home';
+import { contentDiv, createAElement, createDOMElement } from './home';
 import itemData from './items-data.csv';
 
 const imagesContext = require.context(
-  './img/menu_items/',
+  './img/items_icons/',
   false,
   /\.(webp|png|jpe?g)$/
 );
 
-const imageMap = imagesContext.keys().reduce((acc, path) => {
+export const imageMap = imagesContext.keys().reduce((acc, path) => {
   const filename = path.split('/').pop().split('.').shift();
   acc[filename] = imagesContext(path);
   return acc;
@@ -16,55 +16,37 @@ const imageMap = imagesContext.keys().reduce((acc, path) => {
 
 function createMenuItem(data) {
   const [, name, type, , quality, effect] = data;
-  const filepath =
-    imageMap[name.replaceAll(' ', '_').replaceAll("'", '%27')];
-
-  const item = document.createElement('div');
-  const itemName = document.createElement('div');
-  const itemEffect = document.createElement('p');
-  const itemDetail = document.createElement('div');
+  const filepath = imageMap[name.replaceAll(' ', '_').replaceAll("'", '%27')];
 
   // create containing divs for each part of the item entry
-  item.classList.add('item');
-  itemName.classList.add('item-name');
-  itemEffect.classList.add('effect');
-  itemDetail.classList.add('item-detail');
+  const item = createDOMElement('div', ['item']);
+  const itemName = createDOMElement('div', ['item-name']);
+  const itemEffect = createDOMElement('p', ['effect'], {}, effect);
+  const itemDetail = createDOMElement('div', ['item-detail']);
 
-  // create div for item name + img
-  const itemImg = new Image();
-  itemImg.src = filepath;
-  itemImg.alt = name + ' icon';
-  const itemTitle = document.createElement('h3');
-  itemTitle.textContent = name;
-  itemName.appendChild(itemImg);
-  itemName.appendChild(itemTitle);
-
-  // add description of item effect
-  itemEffect.textContent = effect;
+  // add a div for item image and name
+  const itemImg = createDOMElement('img', [], {
+    src: filepath,
+    alt: name + ' icon',
+  });
+  const itemTitle = createDOMElement('h3', [], {}, name);
 
   // add item details
-  const itemQualityTitle = document.createElement('span');
-  itemQualityTitle.classList.add('quality');
-  itemQualityTitle.textContent = 'Quality:';
-  const itemQualityValue = document.createElement('span');
-  itemQualityValue.classList.add('val');
-  itemQualityValue.textContent = quality;
-  const itemTypeTitle = document.createElement('span');
-  itemTypeTitle.classList.add('type');
-  itemTypeTitle.textContent = 'Type:';
-  const itemTypeValue = document.createElement('span');
-  itemTypeValue.classList.add('val');
-  itemTypeValue.textContent = type;
+  const itemQualityTitle = createDOMElement('span', ['quality'], {}, 'Quality:');
+  const itemQualityValue = createDOMElement('span', ['val'], {}, quality);
+  const itemTypeTitle = createDOMElement('span', ['type'], {}, 'Type:');
+  const itemTypeValue = createDOMElement('span', ['val'], {}, type);
 
   for (const el of [
     itemQualityTitle,
     itemQualityValue,
     itemTypeTitle,
     itemTypeValue,
-  ]) {
+  ])
     itemDetail.appendChild(el);
-  }
 
+  itemName.appendChild(itemImg);
+  itemName.appendChild(itemTitle);
   item.appendChild(itemName);
   item.appendChild(itemEffect);
   item.appendChild(itemDetail);
@@ -79,42 +61,37 @@ export default function showItemsMenu() {
   while (contentDiv.firstChild) {
     contentDiv.removeChild(contentDiv.lastChild);
   }
+
   // create sidebar with logo
-  const sidebar = document.createElement('div');
-  sidebar.classList.add('sidebar');
-  const logoImg = new Image();
-  logoImg.src = logo;
-  logoImg.alt = 'Enter the Gungeon logo';
+  const sidebar = createDOMElement('div', ['sidebar']);
+  const logoImg = createDOMElement('img', [], {
+    src: logo,
+    alt: 'Enter the Gungeon logo',
+  });
+
   sidebar.appendChild(logoImg);
   contentDiv.appendChild(sidebar);
 
   // create container for the nav and menu + items
-  const menuContainer = document.createElement('div');
-  menuContainer.classList.add('menu-container');
-  contentDiv.appendChild(menuContainer);
+  const menuContainer = createDOMElement('div', ['menu-container']);
 
   // create the nav
-  const nav = document.createElement('div');
-  nav.setAttribute('id', 'nav');
-  nav.classList.add('nav');
+  const nav = createDOMElement('div', ['nav'], { id: 'nav' });
   menuContainer.appendChild(nav);
 
   // create the nav items
-  const tabs = document.createElement('div');
-  tabs.classList.add('tabs');
+  const tabs = createDOMElement('div', ['tabs']);
   nav.appendChild(tabs);
 
-  const categoryTabs = document.createElement('div');
-  tabs.classList.add('category-tabs');
-  const itemsTab = makeA('ITEMS', '#');
-  const weaponsTab = makeA('WEAPONS', '#');
+  const categoryTabs = createDOMElement('div', ['category-tabs']);
+  const itemsTab = createAElement('ITEMS', '#');
+  const weaponsTab = createAElement('WEAPONS', '#');
   categoryTabs.appendChild(itemsTab);
   categoryTabs.appendChild(weaponsTab);
 
-  const homeTabs = document.createElement('div');
-  tabs.classList.add('home-tabs');
-  const ourStaffTab = makeA('OUR STAFF', '#');
-  const storeInfoTab = makeA('STORE INFO', '#');
+  const homeTabs = createDOMElement('div', ['home-tabs']);
+  const ourStaffTab = createAElement('OUR STAFF', '#');
+  const storeInfoTab = createAElement('STORE INFO', '#');
   homeTabs.appendChild(ourStaffTab);
   homeTabs.appendChild(storeInfoTab);
 
@@ -122,19 +99,18 @@ export default function showItemsMenu() {
   tabs.appendChild(homeTabs);
 
   // create the menu
-  const menu = document.createElement('div');
-  menu.classList.add('menu');
-  const menuTitle = document.createElement('h1');
-  menuTitle.textContent = 'ITEMS';
+  const menu = createDOMElement('div', ['menu']);
+  const menuTitle = createDOMElement('h1', [], {}, 'ITEMS');
   menu.appendChild(menuTitle);
   menuContainer.appendChild(menu);
 
-  console.log(createMenuItem(itemData[0]));
-
+  // create all menu items
   const menuItems = new DocumentFragment();
+  // More items could be loaded from the CSV, but I haven't downloaded all the images...
   for (const i of itemData.slice(0, 150)) {
     const newItem = createMenuItem(i);
     menuItems.appendChild(newItem);
   }
   menu.append(menuItems);
+  contentDiv.appendChild(menuContainer);
 }
