@@ -1,22 +1,24 @@
 import logo from './img/etglogo.png';
 import { contentDiv, createAElement, createDOMElement } from './home';
+import { menuContainer, menu, sidebar, createMenuBase } from './menu-base';
+import { createWeaponsMenu } from './menu-weapons';
 import itemData from './items-data.csv';
 
-const imagesContext = require.context(
+export const itemImagesContext = require.context(
   './img/items_icons/',
   false,
   /\.(webp|png|jpe?g)$/
 );
 
-export const imageMap = imagesContext.keys().reduce((acc, path) => {
+export const itemImageMap = itemImagesContext.keys().reduce((acc, path) => {
   const filename = path.split('/').pop().split('.').shift();
-  acc[filename] = imagesContext(path);
+  acc[filename] = itemImagesContext(path);
   return acc;
 }, {});
 
-function createMenuItem(data) {
+export function createMenuItem(data) {
   const [, name, type, , quality, effect] = data;
-  const filepath = imageMap[name.replaceAll(' ', '_').replaceAll("'", '%27')];
+  const filepath = itemImageMap[name.replaceAll(' ', '_').replaceAll("'", '%27')];
 
   // create containing divs for each part of the item entry
   const item = createDOMElement('div', ['item']);
@@ -54,58 +56,20 @@ function createMenuItem(data) {
   return item;
 }
 
-export default function showItemsMenu() {
-  contentDiv.classList.remove('home');
-  contentDiv.classList.add('menus');
+export function createItemsMenu() {
+  createMenuBase();
+  // should move the event listener logic to menu-base, and do something like
+  // if currentMenu != itemsMenu, addEventListener()
 
-  while (contentDiv.firstChild) {
-    contentDiv.removeChild(contentDiv.lastChild);
-  }
+  document
+    .querySelector('a.weapons-tab')
+    .addEventListener('click', createWeaponsMenu);
 
-  // create sidebar with logo
-  const sidebar = createDOMElement('div', ['sidebar']);
-  const logoImg = createDOMElement('img', [], {
-    src: logo,
-    alt: 'Enter the Gungeon logo',
-  });
-
-  sidebar.appendChild(logoImg);
-  contentDiv.appendChild(sidebar);
-
-  // create container for the nav and menu + items
-  const menuContainer = createDOMElement('div', ['menu-container']);
-
-  // create the nav
-  const nav = createDOMElement('div', ['nav'], { id: 'nav' });
-  menuContainer.appendChild(nav);
-
-  // create the nav items
-  const tabs = createDOMElement('div', ['tabs']);
-  nav.appendChild(tabs);
-
-  const categoryTabs = createDOMElement('div', ['category-tabs']);
-  const itemsTab = createAElement('ITEMS', '#');
-  const weaponsTab = createAElement('WEAPONS', '#');
-  categoryTabs.appendChild(itemsTab);
-  categoryTabs.appendChild(weaponsTab);
-
-  const homeTabs = createDOMElement('div', ['home-tabs']);
-  const ourStaffTab = createAElement('OUR STAFF', '#');
-  const storeInfoTab = createAElement('STORE INFO', '#');
-  homeTabs.appendChild(ourStaffTab);
-  homeTabs.appendChild(storeInfoTab);
-
-  tabs.appendChild(categoryTabs);
-  tabs.appendChild(homeTabs);
-
-  // create the menu
-  const menu = createDOMElement('div', ['menu']);
-  const menuTitle = createDOMElement('h1', [], {}, 'ITEMS');
+  let menuTitle = createDOMElement('h1', [], {}, 'ITEMS');
   menu.appendChild(menuTitle);
-  menuContainer.appendChild(menu);
 
   // create all menu items
-  const menuItems = new DocumentFragment();
+  let menuItems = new DocumentFragment();
   // More items could be loaded from the CSV, but I haven't downloaded all the images...
   for (const i of itemData.slice(0, 150)) {
     const newItem = createMenuItem(i);

@@ -1,5 +1,5 @@
 import logo from './img/etglogo.png';
-import showItemsMenu from './menu-items';
+import { createItemsMenu } from './menu-items';
 
 export const contentDiv = document.querySelector('div#content');
 
@@ -46,7 +46,7 @@ export default function home() {
 
   const homeTabs = createDOMElement('div', ['home-tabs']);
   const menuTab = createAElement('MENU', '#');
-  menuTab.addEventListener('click', showItemsMenu);
+  menuTab.addEventListener('click', createItemsMenu);
   const staffTab = createAElement('OUR STAFF', '#');
 
   homeTabs.appendChild(menuTab);
