@@ -343,4 +343,4 @@ Charged: 25",0.15,1.2,23,15,10,5,PISTOL,
 ./img/menu_weapons/Mimic Gun,Mimic Gun,"Chance to replace guns the player picks up. Jams enemy bullets that its own shots pass nearby.
 Cannot be dropped or switched away from until enough damage is dealt or ammo is picked up.",,-,Semiautomatic,?,8,900,6,0.07,2,15,35,6,0,SILLY,
 ./img/menu_weapons/Windgunner,Windgunner,Granted by Sprun under the right conditions.,The Way Of Guns,-,Automatic,?,300,∞,45,0.1,0,25,1000,20,0,FULLAUTO,
-./img/menu_weapons/Blasphemy (Wooden),Blasphemy (Wooden),Given to the player in the Bullet's past in order to fight Cannon.,To The Point,-,Semiautomatic,?,6,∞,14,0.2,1,N/A,N/A,N/A,0,SILLY,
+./img/menu_weapons/Blasphemy (Wooden),Blasphemy (Wooden),Given to the player in the Bullet's past in order to fight Cannon.,To The Point,-,Semiautomatic,?,6,∞,14,0.2,1,N/A,N/A,N/A,0,SILLY,

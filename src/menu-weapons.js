@@ -12,11 +12,14 @@ import weaponData from './weapons-data.csv';
 const weaponImagesContext = require.context(
   './img/weapons_icons/',
   false,
-  /\.(webp|png|jpe?g)$/
+  /\.(webp|png|jpe?g)$/i
 );
 
 const weaponImageMap = weaponImagesContext.keys().reduce((acc, path) => {
-  const filename = path.split('/').pop().split('.').shift();
+  const filename = path
+    .split('/')
+    .pop()
+    .replace(/\.[^.]+$/, '');
   acc[filename] = weaponImagesContext(path);
   return acc;
 }, {});
@@ -40,11 +43,11 @@ function createWeaponEntry(data) {
     force,
     spread,
   ] = data;
-  const filepath = weaponImageMap[name.replaceAll(' ', '_').replaceAll("'", '%27')];
+  const filepath = weaponImageMap[name.replaceAll(' ', '_').replaceAll("'", '27')];
 
   // create containing divs for each part of the item entry
   const entry = createDOMElement('div', ['entry']);
-  const entryName = createDOMElement('div', ['entry-name-weapon']);
+  const entryName = createDOMElement('div', ['entry-name', 'entry-name-weapon']);
   const entryDescr = createDOMElement('p', ['description'], {}, desc);
   const entryDetailMain = createDOMElement('div', ['entry-detail']);
   const entryDetailSubTitle = createDOMElement('div', [

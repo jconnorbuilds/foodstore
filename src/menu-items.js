@@ -27,7 +27,7 @@ function createItemEntry(data) {
 
   // create containing divs for each part of the item entry
   const item = createDOMElement('div', ['entry']);
-  const itemName = createDOMElement('div', ['entry-name-item']);
+  const itemName = createDOMElement('div', ['entry-name', 'entry-name-item']);
   const itemEffect = createDOMElement('p', ['effect'], {}, effect);
   const itemDetail = createDOMElement('div', ['entry-detail']);
 

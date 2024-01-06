@@ -40,7 +40,7 @@ export default function home() {
   const homeTabs = createDOMElement('div', ['home-tabs']);
   const menuTab = createDOMElement('a', [], { href: '#' }, 'MENU');
   menuTab.addEventListener('click', createItemsMenu);
-  const staffTab = createDOMElement('a', [], { href: '#' }, 'OUR STAFF');
+  const staffTab = createDOMElement('a', [], { href: '#' }, 'STORE INFO');
 
   homeTabs.appendChild(menuTab);
   homeTabs.appendChild(staffTab);

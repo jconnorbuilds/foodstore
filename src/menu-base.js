@@ -17,7 +17,10 @@ function clearDiv(div) {
     div.removeChild(div.lastChild);
   }
 }
-
+window.addEventListener('scroll', function () {
+  var scrolledHeight = window.scrollY;
+  document.body.style.backgroundPositionY = -(scrolledHeight * 0.08) + 'px';
+});
 // creates the high level divs for the menu
 export const menuContainer = createDOMElement('div', ['menu-container']);
 export const menu = createDOMElement('div', ['menu']);
@@ -56,9 +59,7 @@ export function createMenuBase() {
   categoryTabs.appendChild(weaponsTab);
 
   const homeTabs = createDOMElement('div', ['home-tabs']);
-  const ourStaffTab = createDOMElement('a', [], { href: '#' }, 'OUR STAFF');
   const storeInfoTab = createDOMElement('a', [], { href: '#' }, 'STORE INFO');
-  homeTabs.appendChild(ourStaffTab);
   homeTabs.appendChild(storeInfoTab);
 
   tabs.appendChild(categoryTabs);
