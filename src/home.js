@@ -3,14 +3,7 @@ import { createItemsMenu } from './menu-items';
 
 export const contentDiv = document.querySelector('div#content');
 
-export function createAElement(text, url) {
-  const aTag = document.createElement('a');
-  aTag.setAttribute('href', url);
-  aTag.textContent = text;
-  return aTag;
-}
-
-export function isStandardElement(element) {
+function isStandardElement(element) {
   return element instanceof HTMLElement && !(element instanceof HTMLUnknownElement);
 }
 
@@ -45,9 +38,9 @@ export default function home() {
   });
 
   const homeTabs = createDOMElement('div', ['home-tabs']);
-  const menuTab = createAElement('MENU', '#');
+  const menuTab = createDOMElement('a', [], { href: '#' }, 'MENU');
   menuTab.addEventListener('click', createItemsMenu);
-  const staffTab = createAElement('OUR STAFF', '#');
+  const staffTab = createDOMElement('a', [], { href: '#' }, 'OUR STAFF');
 
   homeTabs.appendChild(menuTab);
   homeTabs.appendChild(staffTab);

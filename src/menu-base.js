@@ -1,31 +1,44 @@
 import logo from './img/etglogo.png';
-import { contentDiv, createAElement, createDOMElement } from './home';
+import { contentDiv, createDOMElement } from './home';
 import { createWeaponsMenu } from './menu-weapons';
 import { createItemsMenu } from './menu-items';
 
-// create the menu
-// create container for the nav and menu + items
+// sets the classes for the appropriate grid layout
+function initMenuLayout() {
+  contentDiv.classList.remove('home');
+  contentDiv.classList.add('menus');
+}
+
+function clearDiv(div) {
+  if (div.nodeName !== 'DIV') {
+    console.warn(div + ' is not a div..');
+  }
+  while (div.firstChild) {
+    div.removeChild(div.lastChild);
+  }
+}
+
+// creates the high level divs for the menu
 export const menuContainer = createDOMElement('div', ['menu-container']);
 export const menu = createDOMElement('div', ['menu']);
 export const sidebar = createDOMElement('div', ['sidebar']);
 export const nav = createDOMElement('div', ['nav'], { id: 'nav' });
+export const menuTitle = createDOMElement('h1', [], {}, '');
 
 export function createMenuBase() {
-  contentDiv.classList.remove('home');
-  contentDiv.classList.add('menus');
-
-  while (contentDiv.firstChild) {
-    contentDiv.removeChild(contentDiv.lastChild);
-  }
-
   const logoImg = createDOMElement('img', [], {
     src: logo,
     alt: 'Enter the Gungeon logo',
   });
+  for (const div of [contentDiv, menuContainer, menu, sidebar, nav]) {
+    clearDiv(div);
+  }
+  initMenuLayout();
 
   sidebar.appendChild(logoImg);
   contentDiv.appendChild(sidebar);
   menuContainer.appendChild(nav);
+  menuContainer.appendChild(menuTitle);
 
   // create the nav items
   const tabs = createDOMElement('div', ['tabs']);
@@ -43,8 +56,8 @@ export function createMenuBase() {
   categoryTabs.appendChild(weaponsTab);
 
   const homeTabs = createDOMElement('div', ['home-tabs']);
-  const ourStaffTab = createAElement('OUR STAFF', '#');
-  const storeInfoTab = createAElement('STORE INFO', '#');
+  const ourStaffTab = createDOMElement('a', [], { href: '#' }, 'OUR STAFF');
+  const storeInfoTab = createDOMElement('a', [], { href: '#' }, 'STORE INFO');
   homeTabs.appendChild(ourStaffTab);
   homeTabs.appendChild(storeInfoTab);
 

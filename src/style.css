@@ -91,9 +91,14 @@ body {
 }
 
 .tabs div a:hover,
-.home-tabs a:hover {
+.home-tabs a:hover,
+.entry:hover .show-hide-details {
   text-shadow: 0 0 4px #03ffff;
   color: white;
+}
+.show-hide-details {
+  cursor: pointer;
+  transition: all 350ms;
 }
 
 .menu-container .menu {
@@ -105,55 +110,99 @@ body {
   gap: 2rem;
 }
 
-.menu .item {
+.menu .entry {
+  display: grid;
+  align-content: start;
+  grid-template-rows: repeat(3, auto) 1fr;
   background-color: rgba(255, 255, 255, 0.13);
   padding: 2rem;
   min-width: 300px;
   border-radius: 40px 20px;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-text-select: none;
+  -webkit-user-select: none;
   transition: background-color 250ms, border-radius 250ms, box-shadow 350ms;
 }
 
-.menu .item:hover {
-  background-color: rgba(255, 255, 255, 0.2);
+.menu .entry:hover {
+  /* Start the animation from the initial state */
+  animation: entryHoverMotion 1s linear 350ms infinite alternate;
   border-radius: 40px;
+  background-color: rgba(255, 255, 255, 0.2);
   box-shadow: 0 0 10px rgba(255, 255, 255, 0.765);
 }
 
-.menu .item-name {
+@keyframes entryHoverMotion {
+  0% {
+    border-radius: 40px;
+    background-color: rgba(255, 255, 255, 0.2);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.765);
+  }
+
+  100% {
+    /* Final hover state (equivalent to "10") */
+    border-radius: 48px 30px 32px 49px;
+    background-color: rgba(255, 255, 255, 0.23);
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.8);
+  }
+}
+
+.menu .entry-name-item {
   display: grid;
   justify-items: center;
 }
 
-.item h3 {
+.menu .entry-name-weapon {
+  display: grid;
+  grid-template-columns: minmax(max-content, 1fr) max-content 1fr;
+  align-items: center;
+}
+
+.entry-name-weapon h3 {
+  display: inline;
+  margin: 0 5px;
+  justify-self: center;
+}
+
+.entry .entry-detail-sub {
+  display: grid;
+}
+
+.entry .entry-detail-sub.hidden {
+  display: none;
+}
+
+.entry-name-item h3 {
   display: inline;
 }
 
-.menu .item img {
+.menu .entry img {
   display: inline;
   height: 45px;
   image-rendering: pixelated;
 }
 
-.menu h1 {
-  grid-column: 1 / -1;
+.menu-container h1 {
+  /* grid-column: 1 / -1; */
   font-size: 3rem;
   padding: 1rem;
   justify-self: center;
 }
 
-.menu .item > p {
+.menu .entry > p {
   margin: 1rem 0;
 }
-.menu .item-detail {
+.menu .entry-detail {
   display: grid;
-  grid-template-columns: auto 1fr;
+  grid-template-columns: max-content 1fr;
+  column-gap: 10px;
   grid-template-rows: 1fr 1fr;
+  transition: all 500ms;
 }
-.item-detail .quality,
-.item-detail .type {
-  grid-column: 1;
-}
-.item-detail .val {
-  grid-column: 2;
-  margin: 0 3ch;
+
+.entry .show-hide-details {
+  margin-top: 1rem;
+  text-align: right;
+  align-self: end;
 }

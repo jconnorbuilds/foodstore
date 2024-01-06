@@ -2,17 +2,14 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1.0"
-    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="main.js" defer></script>
     <link rel="stylesheet" href="reset.css" />
     <link rel="stylesheet" href="style.css" />
     <title>Menu</title>
   </head>
   <body>
-    <div id="content">
+    <div id="content" class="menus">
       <div class="sidebar">
         <img src="./img/etglogo.png" alt="Enter the Gungeon logo" />
       </div>
@@ -29,22 +26,36 @@
             </div>
           </div>
         </div>
+        <h1>ITEMS</h1>
         <div class="menu">
-          <h1>ITEMS</h1>
-          <div class="item">
+          <div class="entry">
             <div class="item-name">
               <img src="../src/img/Relodestone.png" alt="Relodestone" />
-              <h3>Relodestone</h3>
+              <h3>Makeshift Cannon</h3>
             </div>
             <p class="effect">
-              Halves reload times. While active, the player absorbs enemy
-              bullets and regains ammo.
+              Fires a single blast that deals a large amount of damage.
             </p>
             <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Active</span>
+              <span class="quality">Quality:</span>
+              <span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Charged</span>
+              <span class="detail dps">DPS:</span><span class="val">571.0</span>
+              <span class="detail mag-size-cap">Mag size / Ammo cap.:</span
+              ><span class="val">1 / 1</span>
+              <span class="detail damage">Damage:</span
+              ><span class="val">1213.3 (approx)</span>
+              <span class="detail fire-rate">Fire rate:</span
+              ><span class="val">0.50</span>
+              <span class="rdetail eload-time">Reload time:</span
+              ><span class="val">2.1</span>
+              <span class="detail shot-speed">Quality:</span
+              ><span class="val">35</span> <span class="detail range">Range:</span
+              ><span class="val">1000</span> <span class="detail force">Force:</span
+              ><span class="val">60</span> <span class="detail spread">Spread:</span
+              ><span class="val">6</span>
             </div>
+            <div class="show-hide-details">Hide details</div>
           </div>
           <div class="item">
             <div class="item-name">
@@ -52,79 +63,25 @@
               <h3>Blank Bullets</h3>
             </div>
             <p class="effect">
-              Projectile impacts can trigger a short range blank. Increases
-              curse by 1.5.
+              Projectile impacts can trigger a short range blank. Increases curse by
+              1.5.
             </p>
             <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Passive</span>
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Passive</span>
             </div>
           </div>
           <div class="item">
             <div class="item-name">
-              <img
-                src="../src/img/Platinum_Bullets.png"
-                alt="Relodestone"
-              />
+              <img src="../src/img/Platinum_Bullets.png" alt="Relodestone" />
               <h3>Platinum Bullets</h3>
             </div>
             <p class="effect">
-              Increases damage and fire rate with every bullet that hits an
-              enemy.
+              Increases damage and fire rate with every bullet that hits an enemy.
             </p>
             <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Passive</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="item-name">
-              <img src="../src/img/Relodestone.png" alt="Relodestone" />
-              <h3>Relodestone</h3>
-            </div>
-            <p class="effect">
-              Halves reload times. While active, the player absorbs enemy
-              bullets and regains ammo.
-            </p>
-            <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Active</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="item-name">
-              <img src="../src/img/Blank_Bullets.png" alt="Relodestone" />
-              <h3>Blank Bullets</h3>
-            </div>
-            <p class="effect">
-              Projectile impacts can trigger a short range blank. Increases
-              curse by 1.5.
-            </p>
-            <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Passive</span>
-            </div>
-          </div>
-          <div class="item">
-            <div class="item-name">
-              <img
-                src="../src/img/Platinum_Bullets.png"
-                alt="Relodestone"
-              />
-              <h3>Platinum Bullets</h3>
-            </div>
-            <p class="effect">
-              Increases damage and fire rate with every bullet that hits an
-              enemy.
-            </p>
-            <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Passive</span>
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Passive</span>
             </div>
           </div>
           <div class="item">
@@ -133,13 +90,12 @@
               <h3>Relodestone</h3>
             </div>
             <p class="effect">
-              Halves reload times. While active, the player absorbs enemy
-              bullets and regains ammo.
+              Halves reload times. While active, the player absorbs enemy bullets and
+              regains ammo.
             </p>
             <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Active</span>
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Active</span>
             </div>
           </div>
           <div class="item">
@@ -148,31 +104,66 @@
               <h3>Blank Bullets</h3>
             </div>
             <p class="effect">
-              Projectile impacts can trigger a short range blank. Increases
-              curse by 1.5.
+              Projectile impacts can trigger a short range blank. Increases curse by
+              1.5.
             </p>
             <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Passive</span>
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Passive</span>
             </div>
           </div>
           <div class="item">
             <div class="item-name">
-              <img
-                src="../src/img/Platinum_Bullets.png"
-                alt="Relodestone"
-              />
+              <img src="../src/img/Platinum_Bullets.png" alt="Relodestone" />
               <h3>Platinum Bullets</h3>
             </div>
             <p class="effect">
-              Increases damage and fire rate with every bullet that hits an
-              enemy.
+              Increases damage and fire rate with every bullet that hits an enemy.
             </p>
             <div class="item-detail">
-              <span class="quality">Quality:</span
-              ><span class="val">S</span> <span class="type">Type:</span
-              ><span class="val">Passive</span>
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Passive</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-name">
+              <img src="../src/img/Relodestone.png" alt="Relodestone" />
+              <h3>Relodestone</h3>
+            </div>
+            <p class="effect">
+              Halves reload times. While active, the player absorbs enemy bullets and
+              regains ammo.
+            </p>
+            <div class="item-detail">
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Active</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-name">
+              <img src="../src/img/Blank_Bullets.png" alt="Relodestone" />
+              <h3>Blank Bullets</h3>
+            </div>
+            <p class="effect">
+              Projectile impacts can trigger a short range blank. Increases curse by
+              1.5.
+            </p>
+            <div class="item-detail">
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Passive</span>
+            </div>
+          </div>
+          <div class="item">
+            <div class="item-name">
+              <img src="../src/img/Platinum_Bullets.png" alt="Relodestone" />
+              <h3>Platinum Bullets</h3>
+            </div>
+            <p class="effect">
+              Increases damage and fire rate with every bullet that hits an enemy.
+            </p>
+            <div class="item-detail">
+              <span class="quality">Quality:</span><span class="val">S</span>
+              <span class="type">Type:</span><span class="val">Passive</span>
             </div>
           </div>
         </div>
