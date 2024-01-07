@@ -32,7 +32,10 @@ export function clearDiv(div) {
 
 function createItemEntry(data) {
   const [, name, type, , quality, effect] = data;
-  const filepath = itemImageMap[name.replaceAll(' ', '_').replaceAll("'", '%27')];
+  const filepath =
+    itemImageMap[
+      name.replaceAll(' ', '_').replaceAll("'", '27').replaceAll('+', '2B')
+    ];
 
   // create containing divs for each part of the item entry
   const item = createDOMElement('div', ['entry']);
@@ -83,7 +86,7 @@ export function createItemsMenu() {
   // create all menu items
   let menuItems = new DocumentFragment();
   // More items could be loaded from the CSV, but I haven't downloaded all the images...
-  for (const i of itemData.slice(0, 150)) {
+  for (const i of itemData) {
     const newItem = createItemEntry(i);
     menuItems.appendChild(newItem);
   }

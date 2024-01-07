@@ -248,11 +248,11 @@ Increases reload speed and accuracy."
 ./img/menu_items/Battle Standard,Battle Standard,Passive,Set Your Own!,D,Increases the damage of companions and charmed enemies.
 ./img/menu_items/Dog,Dog,Passive,Junior II,D,"Follows the player around, occasionally digs up a pickup upon completing a room, and barks at mimic chests."
 ./img/menu_items/Heavy Bullets,Heavy Bullets,Passive,Thunk!,C,"Increases damage by 25% and doubles knockback, but halves bullet speed."
-./img/menu_items/Master Round,Master Round,Passive,First Chamber,-,Grants a heart container.
-./img/menu_items/Master Round,Master Round,Passive,Second Chamber,-,Grants a heart container.
-./img/menu_items/Master Round,Master Round,Passive,Third Chamber,-,Grants a heart container.
-./img/menu_items/Master Round,Master Round,Passive,Fourth Chamber,-,Grants a heart container.
-./img/menu_items/Master Round,Master Round,Passive,Fifth Chamber,-,Grants a heart container.
+./img/menu_items/Master Round I,Master Round I,Passive,First Chamber,-,Grants a heart container.
+./img/menu_items/Master Round II,Master Round II,Passive,Second Chamber,-,Grants a heart container.
+./img/menu_items/Master Round III,Master Round III,Passive,Third Chamber,-,Grants a heart container.
+./img/menu_items/Master Round IV,Master Round IV,Passive,Fourth Chamber,-,Grants a heart container.
+./img/menu_items/Master Round V,Master Round V,Passive,Fifth Chamber,-,Grants a heart container.
 ./img/menu_items/Prime Primer,Prime Primer,Passive,Old Magic,-,Ingredient for the Bullet That Can Kill The Past.
 ./img/menu_items/Arcane Gunpowder,Arcane Gunpowder,Active,From The Deep,-,"Ingredient for the Bullet That Can Kill The Past, cannot be used."
 ./img/menu_items/Planar Lead,Planar Lead,Passive,Astral Slug,-,Ingredient for the Bullet That Can Kill The Past.
