@@ -30,7 +30,7 @@ export function createMenuBase() {
   logoImg.addEventListener('click', home);
   window.addEventListener('scroll', function () {
     var scrolledHeight = window.scrollY;
-    document.body.style.backgroundPositionY = -(scrolledHeight * 0.08) + 'px';
+    document.body.style.backgroundPositionY = -(scrolledHeight * 0.04) + 'px';
   });
 
   sidebar.appendChild(logoImg);

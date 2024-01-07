@@ -25,6 +25,7 @@ export function clearDiv(div) {
   if (div.nodeName !== 'DIV') {
     console.warn(div + ' is not a div..');
   }
+  // removing lastChild is supposedly faster than removing firstChild
   while (div.firstChild) {
     div.removeChild(div.lastChild);
   }
