@@ -1,32 +1,22 @@
 import logo from './img/etglogo.png';
-import { contentDiv, createDOMElement } from './home';
+import { contentDiv, createDOMElement, home, clearDiv } from './home';
 import { createWeaponsMenu } from './menu-weapons';
 import { createItemsMenu } from './menu-items';
+import createStoreInfoPage from './store-info';
 
-// sets the classes for the appropriate grid layout
-function initMenuLayout() {
-  contentDiv.classList.remove('home');
-  contentDiv.classList.add('menus');
-}
-
-function clearDiv(div) {
-  if (div.nodeName !== 'DIV') {
-    console.warn(div + ' is not a div..');
-  }
-  while (div.firstChild) {
-    div.removeChild(div.lastChild);
-  }
-}
-window.addEventListener('scroll', function () {
-  var scrolledHeight = window.scrollY;
-  document.body.style.backgroundPositionY = -(scrolledHeight * 0.08) + 'px';
-});
 // creates the high level divs for the menu
 export const menuContainer = createDOMElement('div', ['menu-container']);
 export const menu = createDOMElement('div', ['menu']);
 export const sidebar = createDOMElement('div', ['sidebar']);
 export const nav = createDOMElement('div', ['nav'], { id: 'nav' });
 export const menuTitle = createDOMElement('h1', [], {}, '');
+
+// sets the classes for the appropriate grid layout
+function initMenuLayout() {
+  contentDiv.classList.remove('home');
+  contentDiv.classList.remove('menus');
+  menu.classList.remove('info-page');
+}
 
 export function createMenuBase() {
   const logoImg = createDOMElement('img', [], {
@@ -37,6 +27,11 @@ export function createMenuBase() {
     clearDiv(div);
   }
   initMenuLayout();
+  logoImg.addEventListener('click', home);
+  window.addEventListener('scroll', function () {
+    var scrolledHeight = window.scrollY;
+    document.body.style.backgroundPositionY = -(scrolledHeight * 0.08) + 'px';
+  });
 
   sidebar.appendChild(logoImg);
   contentDiv.appendChild(sidebar);
@@ -60,6 +55,7 @@ export function createMenuBase() {
 
   const homeTabs = createDOMElement('div', ['home-tabs']);
   const storeInfoTab = createDOMElement('a', [], { href: '#' }, 'STORE INFO');
+  storeInfoTab.addEventListener('click', createStoreInfoPage);
   homeTabs.appendChild(storeInfoTab);
 
   tabs.appendChild(categoryTabs);

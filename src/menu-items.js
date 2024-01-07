@@ -21,6 +21,15 @@ const itemImageMap = itemImagesContext.keys().reduce((acc, path) => {
   return acc;
 }, {});
 
+export function clearDiv(div) {
+  if (div.nodeName !== 'DIV') {
+    console.warn(div + ' is not a div..');
+  }
+  while (div.firstChild) {
+    div.removeChild(div.lastChild);
+  }
+}
+
 function createItemEntry(data) {
   const [, name, type, , quality, effect] = data;
   const filepath = itemImageMap[name.replaceAll(' ', '_').replaceAll("'", '%27')];
@@ -63,8 +72,8 @@ function createItemEntry(data) {
 
 export function createItemsMenu() {
   createMenuBase();
-  // should move the event listener logic to menu-base, and do something like
-  // if currentMenu != itemsMenu, addEventListener()
+  contentDiv.classList.add('menus');
+
   document
     .querySelector('a.weapons-tab')
     .addEventListener('click', createWeaponsMenu);

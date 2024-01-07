@@ -1,10 +1,26 @@
 import logo from './img/etglogo.png';
 import { createItemsMenu } from './menu-items';
+import { menuContainer, menu, sidebar, nav, menuTitle } from './menu-base';
+import createStoreInfoPage from './store-info';
 
 export const contentDiv = document.querySelector('div#content');
 
 function isStandardElement(element) {
   return element instanceof HTMLElement && !(element instanceof HTMLUnknownElement);
+}
+function initHomeLayout() {
+  contentDiv.classList.remove('menus');
+  contentDiv.classList.add('home');
+  menu.classList.remove('info-page');
+}
+
+export function clearDiv(div) {
+  if (div.nodeName !== 'DIV') {
+    console.warn(div + ' is not a div..');
+  }
+  while (div.firstChild) {
+    div.removeChild(div.lastChild);
+  }
 }
 
 export function createDOMElement(
@@ -28,8 +44,11 @@ export function createDOMElement(
   return element;
 }
 
-export default function home() {
-  contentDiv.classList.remove('menus');
+export function home() {
+  initHomeLayout();
+  for (const div of [contentDiv, menuContainer, menu, sidebar, nav]) {
+    clearDiv(div);
+  }
   contentDiv.classList.add('home');
 
   const logoImg = createDOMElement('img', [], {
@@ -40,10 +59,11 @@ export default function home() {
   const homeTabs = createDOMElement('div', ['home-tabs']);
   const menuTab = createDOMElement('a', [], { href: '#' }, 'MENU');
   menuTab.addEventListener('click', createItemsMenu);
-  const staffTab = createDOMElement('a', [], { href: '#' }, 'STORE INFO');
+  const storeInfo = createDOMElement('a', [], { href: '#' }, 'STORE INFO');
+  storeInfo.addEventListener('click', createStoreInfoPage);
 
   homeTabs.appendChild(menuTab);
-  homeTabs.appendChild(staffTab);
+  homeTabs.appendChild(storeInfo);
   contentDiv.appendChild(logoImg);
   contentDiv.appendChild(homeTabs);
 }

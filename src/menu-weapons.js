@@ -179,6 +179,7 @@ function createWeaponEntry(data) {
 
 export function createWeaponsMenu() {
   createMenuBase();
+  contentDiv.classList.add('menus');
 
   menuTitle.textContent = 'WEAPONS';
   document.querySelector('a.items-tab').addEventListener('click', createItemsMenu);
