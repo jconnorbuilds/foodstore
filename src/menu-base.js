@@ -1,7 +1,5 @@
 import logo from './img/etglogo.png';
 import { contentDiv, createDOMElement, home, clearDiv } from './home';
-import { createWeaponsMenu } from './menu-weapons';
-import { createItemsMenu } from './menu-items';
 import createStoreInfoPage from './store-info';
 
 // creates the high level divs for the menu
